@@ -21,5 +21,5 @@ app.use((err, req, res, next) => {
 });
 
 const server = app.listen(port, () => {
-    console.log('App listening at port %s', port);
+    console.log(`App listening at port ${port}`);
 });
