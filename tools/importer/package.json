@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "find-process": "^1.2.1",
+    "mongoose": "^5.4.11",
+    "mongoose-dummy": "^1.0.8",
     "terminal-kit": "^1.26.11"
   }
 }

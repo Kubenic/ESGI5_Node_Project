@@ -1,9 +1,21 @@
-version: '3.1'
+version: '3.5'
 services:
 
   importer:
     image: 'node:10-alpine'
     volumes:
     - '.:/home/node/app'
+    - '../../app:/home/node/app/application'
     working_dir: /home/node/app
+    environment:
+      MONGODB_USER: root
+      MONGODB_PASSWORD: password
+      MONGODB_DBNAME: SampleCollections
     command: 'npm start'
+    networks:
+      - proxy-outdoor
+
+networks:
+  proxy-outdoor:
+    external:
+      name: outdoor_network
