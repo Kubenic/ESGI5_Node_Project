@@ -1,9 +1,9 @@
 version: '3.1'
-
 services:
-  server:
+
+  importer:
     image: 'node:10-alpine'
     volumes:
-    - './app/:/home/node/app'
+    - '.:/home/node/app'
     working_dir: /home/node/app
     command: 'npm start'
