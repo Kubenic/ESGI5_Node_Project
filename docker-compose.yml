@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.5'
 
 services:
   mongo:
@@ -12,10 +12,13 @@ services:
     - ./SampleCollections:/usr/local/sampleCollections
     working_dir: /usr/local/sampleCollections
 
+
   mongo-express:
     image: mongo-express
     ports:
     - 127.0.0.1:8088:8081
+    depends_on:
+      - mongo
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: password
@@ -27,10 +30,27 @@ services:
     ports:
     - 127.0.0.1:8080:80
     volumes:
-    - './app/:/home/node/app'
+    - './server/:/home/node/app'
     working_dir: /home/node/app
     environment:
       MONGODB_USER: root
       MONGODB_PASSWORD: password
       MONGODB_DBNAME: SampleCollections
+      JWT_SECRET: ozgoizjfpoipanh
     command: 'npm start'
+
+  client:
+    image: 'node:10-alpine'
+    depends_on:
+    - server
+    ports:
+    - 127.0.0.1:3001:3000
+    volumes:
+    - './client/:/home/node/app'
+    working_dir: /home/node/app
+    environment:
+      MONGODB_USER: root
+      MONGODB_PASSWORD: password
+      MONGODB_DBNAME: SampleCollections
+      JWT_SECRET: ozgoizjfpoipanh
+    command: 'yarn start'

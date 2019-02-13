@@ -1,3 +1,4 @@
+const auth = require('./libs/auth');
 module.exports = router => {
 
     router.get('/', (req, res) => {
@@ -7,6 +8,10 @@ module.exports = router => {
     router.get('/test/:id', (req, res) => {
         res.send(`test with id = ${req.params.id}`);
     });
+    router.post('/user/login',auth.AuthLogin)
+    /*router.post('/user/login',(req,res) => {
+        res.send('user login ! ')
+    })*/
 };
 
 /**
