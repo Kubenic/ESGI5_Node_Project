@@ -8,6 +8,7 @@ const logUser = (data) => {
 
 export const login = (username, password, dispatch) => {
     const data = {username, password};
+    console.log(JSON.stringify(data));
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     fetch('http://localhost:3000/login_check',
