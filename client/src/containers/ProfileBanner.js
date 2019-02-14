@@ -6,7 +6,7 @@ import Banner from "../components/Banner";
 class ProfileBanner extends React.Component {
     render() {
         const { user, isLogged } = this.props;
-        return <Banner content={isLogged ? user.token : 'Not connected'}/>
+        return <Banner content={isLogged ? user.token : "Vous n'êtes pas connecté(e)"}/>
     }
 }
 

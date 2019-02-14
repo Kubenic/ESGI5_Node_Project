@@ -23,9 +23,9 @@ export default class LoginForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <label>Username</label>
+                <label>Nom de compte</label>
                 <input onKeyUp={(event) => this.handleKeyUp(event, 'username')}/>
-                <label>Password</label>
+                <label>Mot de passe</label>
                 <input onKeyUp={(event) => this.handleKeyUp(event, 'password')} type="password"/>
                 <button>Submit</button>
             </form>

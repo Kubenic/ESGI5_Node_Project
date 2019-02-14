@@ -4,7 +4,8 @@ import './App.css';
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import ToggleButtonContainer from "./containers/ToggleButtonContainer";
 import SecurityContainer from "./containers/SecurityContainer";
-import ProductContainer from "./containers/ProductContainer";
+import ProductCreateContainer from "./containers/ProductCreateContainer";
+import ProductsContainer from "./containers/ProductsContainer";
 import ProfileBanner from "./containers/ProfileBanner"
 
 class App extends Component {
@@ -19,27 +20,22 @@ class App extends Component {
             <div className="App">
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo" style={style}/>
-                    <p>
-                        Edit <code>src/App.js</code> and save to reload.
-                    </p>
-
-                    <ToggleButtonContainer/>
                     <ProfileBanner/>
+                    <ToggleButtonContainer/>
+
                     <BrowserRouter>
                         <React.Fragment>
-                            <Link to="/security/login">Login</Link>
-                            <Link to="/products">Products</Link>
+                            <Link to="/security/login">Connexion</Link>
+                            <Link to="/product/create">Créer un produit</Link>
+                            <Link to="/products">Voir les produits</Link>
 
                             <Switch>
                                 <Route path="/security" component={SecurityContainer}/>
-                                <Route path="/products" component={ProductContainer}/>
+                                <Route path="/product/create" exact component={ProductCreateContainer}/>
+                                <Route path="/products" component={ProductsContainer}/>
                             </Switch>
                         </React.Fragment>
                     </BrowserRouter>
-
-                    <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-                        Learn React
-                    </a>
                 </header>
             </div>
         );
