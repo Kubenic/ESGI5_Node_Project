@@ -32,8 +32,7 @@ module.exports = router => {
         });
     });
 
-    router.post('/user/login',auth.AuthLogin)
-    /*router.post('/user/login',(req,res) => {
-        res.send('user login ! ')
-    })*/
+    router.post('/user/login',auth.AuthLogin);
+    router.post('/user/register',auth.AuthRegister);
+    router.post('/user/example',auth.generateExampleToken);
 };

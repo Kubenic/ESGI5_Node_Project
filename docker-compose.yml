@@ -35,6 +35,7 @@ services:
       MONGODB_USER: root
       MONGODB_PASSWORD: password
       MONGODB_DBNAME: SampleCollections
+      MONGODB_PORT: 27017
       JWT_SECRET: ozgoizjfpoipanh
     command: 'npm start'
 
