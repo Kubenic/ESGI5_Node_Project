@@ -1,29 +1,37 @@
 const auth = require('./libs/auth');
+const Product = require('./models/product').Product;
+
 module.exports = router => {
 
     router.get('/', (req, res) => {
         res.send('Hello World!');
     });
 
-    router.get('/test/:id', (req, res) => {
-        res.send(`test with id = ${req.params.id}`);
+    router.get('/products', (req, res) => {
+        Product.find().then(data => {
+            res.send(data);
+        }).catch(error => {
+            res.status(400).send(error);
+        });
     });
+
+    router.get('/product/add', (req, res) => {
+        const newProduct = new Product({
+            "title": 'un titre',
+            "description": 'une description',
+            "price": 42,
+            "vote": 1000000
+        });
+
+        newProduct.save().then(data => {
+            res.status(201).send(data);
+        }).catch(error => {
+            res.status(400).send(error);
+        });
+    });
+
     router.post('/user/login',auth.AuthLogin)
     /*router.post('/user/login',(req,res) => {
         res.send('user login ! ')
     })*/
 };
-
-/**
- * Usage :
- *
-    if (!data) {
-        throw errorHandler(404);
-    }
- *
- */
-function errorHandler(statusCode) {
-    return Object.assign(new Error(), {
-        statusCode
-    });
-}
