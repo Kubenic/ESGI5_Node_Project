@@ -12,7 +12,6 @@ services:
     - ./SampleCollections:/usr/local/sampleCollections
     working_dir: /usr/local/sampleCollections
 
-
   mongo-express:
     image: mongo-express
     ports:
@@ -49,9 +48,4 @@ services:
     volumes:
     - './client/:/home/node/app'
     working_dir: /home/node/app
-    environment:
-      MONGODB_USER: root
-      MONGODB_PASSWORD: password
-      MONGODB_DBNAME: SampleCollections
-      JWT_SECRET: ozgoizjfpoipanh
     command: 'yarn start'

@@ -3,12 +3,12 @@ const db = require('../libs/db');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    email: String,
-    login: String,
+    email: { type: String, required: true },
+    login: { type: String, min: 1, max: 50, required: true },
     username: { type: String, min: 1, max: 50 },
-    firstname: { type: String, min: 1, max: 50 },
-    lastname: { type: String, min: 1, max: 50 },
-    password: { type: String, min: 1, max: 255 },
+    firstname: { type: String, min: 1, max: 50, required: true },
+    lastname: { type: String, min: 1, max: 50, required: true },
+    password: { type: String, min: 1, max: 255, required: true },
     createdAt: { type: Date, default: Date.now },
     editedAt: { type: Date, default: Date.now },
     isActive: { type: Boolean, default: 1},
