@@ -8,8 +8,10 @@ module.exports = router => {
     });
 
     router.get('/products', (req, res) => {
+        res.setHeader('Content-Type', 'application/json');
+
         Product.find().then(data => {
-            res.send(data);
+            res.send(JSON.stringify(data));
         }).catch(error => {
             res.status(400).send(error);
         });
