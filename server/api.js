@@ -8,7 +8,9 @@ module.exports = router => {
     router.get('/test/:id', (req, res) => {
         res.send(`test with id = ${req.params.id}`);
     });
-    router.post('/user/login',auth.AuthLogin)
+    router.post('/user/login',auth.AuthLogin);
+    router.post('/user/register',auth.AuthRegister);
+    router.post('/user/example',auth.generateExampleToken);
     /*router.post('/user/login',(req,res) => {
         res.send('user login ! ')
     })*/
