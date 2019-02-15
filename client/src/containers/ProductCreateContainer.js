@@ -27,7 +27,7 @@ class ProductCreateContainer extends React.Component {
 
     render() {
         return (
-            <div class="formCss">
+            <div className="formCss">
                 <form onSubmit={this.handleSubmit}>
                     <label> <span> Titre : </span>
                         <input onKeyUp={(event) => this.handleKeyUp(event, 'title')}/>
@@ -41,7 +41,7 @@ class ProductCreateContainer extends React.Component {
                     <label> <span> Vote : </span>
                         <input onKeyUp={(event) => this.handleKeyUp(event, 'vote')}/>
                     </label>
-                    <button class="SubmitButton">Submit</button>
+                    <button className="SubmitButton">Submit</button>
                 </form>
             </div>
         )
