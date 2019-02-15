@@ -1,6 +1,8 @@
 import React from 'react';
+import connect from "react-redux/es/connect/connect";
+import { add } from '../redux/actions/product';
 
-export default class CreateProductFormContainer extends React.Component {
+class ProductCreateContainer extends React.Component {
 
     state = {
         title: '',
@@ -19,7 +21,8 @@ export default class CreateProductFormContainer extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.onSubmit(this.state);
+        this.props.add(this.state.title, this.state.description, this.state.price, this.state.vote);
+        this.props.history.push('/products');
     };
 
     render() {
@@ -37,5 +40,12 @@ export default class CreateProductFormContainer extends React.Component {
             </form>
         )
     }
+}
 
-} 
+const mapDispatchToProps = dispatch => {
+    return {
+        add: (title, description, price, vote) => dispatch(add(title, description, price, vote, dispatch)),
+    }
+};
+
+export default connect(undefined, mapDispatchToProps)(ProductCreateContainer);
