@@ -17,7 +17,7 @@ module.exports = router => {
         });
     });
 
-    router.get('/product/add', (req, res) => {
+    router.post('/product/add', (req, res) => {
         const newProduct = new Product({
             "title": 'un titre',
             "description": 'une description',

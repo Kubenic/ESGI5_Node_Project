@@ -6,7 +6,8 @@ import ToggleButtonContainer from "./containers/ToggleButtonContainer";
 import SecurityContainer from "./containers/SecurityContainer";
 import ProductCreateContainer from "./containers/ProductCreateContainer";
 import ProductsContainer from "./containers/ProductsContainer";
-import ProfileBanner from "./containers/ProfileBanner"
+import ProfileBanner from "./containers/ProfileBanner";
+import HeaderContainer from "./containers/HeaderContainer";
 
 class App extends Component {
 
@@ -18,26 +19,17 @@ class App extends Component {
 
         return (
             <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" style={style}/>
-                    <ProfileBanner/>
-                    <ToggleButtonContainer/>
-
-                    <BrowserRouter>
-                        <React.Fragment>
-                            <Link to="/security/login">Connexion</Link>
-                            <Link to="/security/register">Enregistrement</Link>
-                            <Link to="/product/create">Créer un produit</Link>
-                            <Link to="/products">Voir les produits</Link>
-
-                            <Switch>
-                                <Route path="/security" component={SecurityContainer}/>
-                                <Route path="/product/create" exact component={ProductCreateContainer}/>
-                                <Route path="/products" component={ProductsContainer}/>
-                            </Switch>
-                        </React.Fragment>
-                    </BrowserRouter>
-                </header>
+                <BrowserRouter>
+                    <React.Fragment>
+                        <HeaderContainer/>
+                        <Switch>
+                            <Route path="/security" component={SecurityContainer}/>
+                            <Route path="/product/create" exact component={ProductCreateContainer}/>
+                            <Route path="/products" component={ProductsContainer}/>
+                            <Route path="/" component={ProductsContainer}/>
+                        </Switch>
+                    </React.Fragment>
+                </BrowserRouter>
             </div>
         );
     }
