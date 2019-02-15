@@ -14,7 +14,7 @@ class SecurityContainer extends React.Component {
         if(data.signup){
             this.props.register(data.username, data.password, data.login, data.email, data.firstname, data.lastname);
         }
-    }
+    };
 
     render() {
         return (
@@ -31,6 +31,6 @@ const mapDispatchToProps = dispatch => {
         login: (username, password) => dispatch(login(username, password, dispatch)),
         register: (username, password, login, email, firstname, lastname) => dispatch(register(username, password, login, email, username, firstname, lastname, dispatch))
     }
-}
+};
 
 export default connect(undefined, mapDispatchToProps)(SecurityContainer);

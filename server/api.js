@@ -4,7 +4,7 @@ const Product = require('./models/product').Product;
 module.exports = router => {
 
     router.get('/', (req, res) => {
-        res.send('Hello World!');
+        res.send('');
     });
 
     router.get('/products', (req, res) => {
@@ -18,11 +18,12 @@ module.exports = router => {
     });
 
     router.post('/product/add', (req, res) => {
+
         const newProduct = new Product({
-            "title": 'un titre',
-            "description": 'une description',
-            "price": 42,
-            "vote": 1000000
+            "title": req.body.title,
+            "description": req.body.description,
+            "price": req.body.price,
+            "vote": req.body.vote
         });
 
         newProduct.save().then(data => {

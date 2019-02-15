@@ -23,6 +23,11 @@ export default class ProductsContainer extends React.Component {
             }))
             .catch(error => console.log(error));
     }
+
+    changeVote() {
+        console.log(this.state.products);
+    }
+
     render() {
         const { products, isLoaded } = this.state;
 
@@ -33,12 +38,18 @@ export default class ProductsContainer extends React.Component {
                         <p>Product Container</p>
                         {this.state.products.map((product, i) => {
                             return (
-                                <body>
-                                    <React.Fragment key={`${i}`}>
-                                        <div>{product.title}</div>
-                                        <div>{product.description}</div>
-                                    </React.Fragment>
-                                </body>
+                                <React.Fragment key={`${i}`}>
+                                    <div className="product">
+                                        <div>Nom : {product.title}</div>
+                                        <div>Description : {product.description}</div>
+                                        <div>Prix : {product.price}€</div>
+                                        <div className="vote">
+                                            <div className="downvote" onClick={this.changeVote()}>-</div>
+                                            <div>{product.vote}</div>
+                                            <div className="upvote" onClick={this.changeVote()}>+</div>
+                                        </div>
+                                    </div>
+                                </React.Fragment>
                             )
                         })}
                     </React.Fragment>
@@ -46,18 +57,14 @@ export default class ProductsContainer extends React.Component {
             }else{
                 return (
                     <React.Fragment>
-                        <body>
-                            <p>Product Container</p>
-                        </body>
+                        <p>Product Container</p>
                     </React.Fragment>
                 )
             }
         }
         return (
             <React.Fragment>
-                <body>
-                    <p>Loading....</p>
-                </body>
+                <p>Loading....</p>
             </React.Fragment>
         )
 
