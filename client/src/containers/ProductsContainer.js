@@ -33,10 +33,12 @@ export default class ProductsContainer extends React.Component {
                         <p>Product Container</p>
                         {this.state.products.map((product, i) => {
                             return (
-                                <React.Fragment key={`${i}`}>
-                                    <div>{product.title}</div>
-                                    <div>{product.description}</div>
-                                </React.Fragment>
+                                <body>
+                                    <React.Fragment key={`${i}`}>
+                                        <div>{product.title}</div>
+                                        <div>{product.description}</div>
+                                    </React.Fragment>
+                                </body>
                             )
                         })}
                     </React.Fragment>
@@ -44,14 +46,18 @@ export default class ProductsContainer extends React.Component {
             }else{
                 return (
                     <React.Fragment>
-                        <p>Product Container</p>
+                        <body>
+                            <p>Product Container</p>
+                        </body>
                     </React.Fragment>
                 )
             }
         }
         return (
             <React.Fragment>
-                <p>Loading....</p>
+                <body>
+                    <p>Loading....</p>
+                </body>
             </React.Fragment>
         )
 
