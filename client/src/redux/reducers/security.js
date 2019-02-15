@@ -9,6 +9,12 @@ const reducer = function(state= {
                 isLogged: true,
                 user: action.payload
             });
+        case 'USER':
+            console.log(action);
+            return Object.assign({}, state, {
+                isLogged: true,
+                user: action.payload
+            });
         case 'LOGOUT':
             return Object.assign({}, state, {
                 isLogged: false,

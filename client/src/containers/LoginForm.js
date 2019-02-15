@@ -4,8 +4,11 @@ export default class LoginForm extends React.Component {
 
     state = {
         username: '',
-        password: ''
+        password: '',
+        signin: true,
+        signup: false
     };
+
 
     handleKeyUp = (event, field) => {
         const input = event.currentTarget;

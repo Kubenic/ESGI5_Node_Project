@@ -17,7 +17,7 @@ module.exports = router => {
         });
     });
 
-    router.get('/product/add', (req, res) => {
+    router.post('/product/add', (req, res) => {
         const newProduct = new Product({
             "title": 'un titre',
             "description": 'une description',
@@ -35,4 +35,5 @@ module.exports = router => {
     router.post('/user/login',auth.AuthLogin);
     router.post('/user/register',auth.AuthRegister);
     router.post('/user/example',auth.generateExampleToken);
+    router.get('/user',auth.AuthCheck);
 };

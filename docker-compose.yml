@@ -48,4 +48,6 @@ services:
     volumes:
     - './client/:/home/node/app'
     working_dir: /home/node/app
+    environment:
+          CHOKIDAR_USEPOLLING: 'true'
     command: 'yarn start'
