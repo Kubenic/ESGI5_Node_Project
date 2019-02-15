@@ -36,10 +36,10 @@ class ProductCreateContainer extends React.Component {
                         <input onKeyUp={(event) => this.handleKeyUp(event, 'description')}/>
                     </label>
                     <label> <span> Prix : </span>
-                        <input onKeyUp={(event) => this.handleKeyUp(event, 'price')}/>
+                        <input type="number" onKeyUp={(event) => this.handleKeyUp(event, 'price')}/>
                     </label>
                     <label> <span> Vote : </span>
-                        <input onKeyUp={(event) => this.handleKeyUp(event, 'vote')}/>
+                        <input type="number" onKeyUp={(event) => this.handleKeyUp(event, 'vote')}/>
                     </label>
                     <button className="SubmitButton">Submit</button>
                 </form>
