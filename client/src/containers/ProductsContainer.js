@@ -24,7 +24,11 @@ export default class ProductsContainer extends React.Component {
             .catch(error => console.log(error));
     }
 
-    changeVote() {
+    downVote() {
+        console.log(this.state.products);
+    }
+
+    upVote() {
         console.log(this.state.products);
     }
 
@@ -35,7 +39,6 @@ export default class ProductsContainer extends React.Component {
             if(products.length > 0){
                 return (
                     <React.Fragment>
-                        <p>Product Container</p>
                         {this.state.products.map((product, i) => {
                             return (
                                 <React.Fragment key={`${i}`}>
@@ -44,9 +47,9 @@ export default class ProductsContainer extends React.Component {
                                         <div>Description : {product.description}</div>
                                         <div>Prix : {product.price}€</div>
                                         <div className="vote">
-                                            <div className="downvote" onClick={this.changeVote()}>-</div>
-                                            <div>{product.vote}</div>
-                                            <div className="upvote" onClick={this.changeVote()}>+</div>
+                                            <div className="downvote" onClick={this.downVote()}>-</div>
+                                            <div className="scorevote">{product.vote}</div>
+                                            <div className="upvote" onClick={this.upVote()}>+</div>
                                         </div>
                                     </div>
                                 </React.Fragment>
