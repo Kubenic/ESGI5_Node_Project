@@ -27,17 +27,23 @@ class ProductCreateContainer extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>Titre</label>
-                <input onKeyUp={(event) => this.handleKeyUp(event, 'title')}/>
-                <label>Description</label>
-                <input onKeyUp={(event) => this.handleKeyUp(event, 'description')}/>
-                <label>Prix</label>
-                <input onKeyUp={(event) => this.handleKeyUp(event, 'price')}/>
-                <label>Vote</label>
-                <input onKeyUp={(event) => this.handleKeyUp(event, 'vote')}/>
-                <button>Submit</button>
-            </form>
+            <div class="formCss">
+                <form onSubmit={this.handleSubmit}>
+                    <label> <span> Titre : </span>
+                        <input onKeyUp={(event) => this.handleKeyUp(event, 'title')}/>
+                    </label>
+                    <label> <span> Description : </span>
+                        <input onKeyUp={(event) => this.handleKeyUp(event, 'description')}/>
+                    </label>
+                    <label> <span> Prix : </span>
+                        <input onKeyUp={(event) => this.handleKeyUp(event, 'price')}/>
+                    </label>
+                    <label> <span> Vote : </span>
+                        <input onKeyUp={(event) => this.handleKeyUp(event, 'vote')}/>
+                    </label>
+                    <button class="SubmitButton">Submit</button>
+                </form>
+            </div>
         )
     }
 }
