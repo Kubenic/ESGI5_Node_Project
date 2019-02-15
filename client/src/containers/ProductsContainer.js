@@ -44,9 +44,9 @@ export default class ProductsContainer extends React.Component {
                                         <div>Description : {product.description}</div>
                                         <div>Prix : {product.price}€</div>
                                         <div className="vote">
-                                            <div className="downvote" onClick={this.changeVote()}>-</div>
+                                            <div className="downvote" onClick={this.changeVote}>-</div>
                                             <div>{product.vote}</div>
-                                            <div className="upvote" onClick={this.changeVote()}>+</div>
+                                            <div className="upvote" onClick={this.changeVote}>+</div>
                                         </div>
                                     </div>
                                 </React.Fragment>
