@@ -10,13 +10,7 @@ import ProfileBanner from "./containers/ProfileBanner";
 import HeaderContainer from "./containers/HeaderContainer";
 
 class App extends Component {
-
     render() {
-        const style = {
-            maxHeight: 50,
-            maxWidth: "100%"
-        };
-
         return (
             <div className="App">
                 <BrowserRouter>
