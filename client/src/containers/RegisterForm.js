@@ -33,27 +33,29 @@ export default class RegisterForm extends React.Component {
     }
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>Identifiant :
-                    <input onKeyUp={(event) => this.handleKeyUp(event, 'login')}/>
-                </label>
-                <label>Nom de compte :
-                    <input onKeyUp={(event) => this.handleKeyUp(event, 'username')}/>
-                </label>
-                <label>Prénom :
-                    <input onKeyUp={(event) => this.handleKeyUp(event, 'firstname')}/>
-                </label>
-                <label>Nom :
-                    <input onKeyUp={(event) => this.handleKeyUp(event, 'lastname')}/>
-                </label>
-                <label>Adresse E-Mail :
-                    <input onKeyUp={(event) => this.handleKeyUp(event, 'email')} type="email"/>
-                </label>
-                <label>Mot de passe :
-                    <input onKeyUp={(event) => this.handleKeyUp(event, 'password')} type="password"/>
-                </label>
-                <button>Submit</button>
-            </form>
+            <div class="formCss">
+                <form onSubmit={this.handleSubmit}>
+                    <label> <span> Identifiant : </span>
+                        <input onKeyUp={(event) => this.handleKeyUp(event, 'login')}/>
+                    </label>
+                    <label> <span> Nom de compte : </span>
+                        <input onKeyUp={(event) => this.handleKeyUp(event, 'username')}/>
+                    </label>
+                    <label> <span> Prénom : </span>
+                        <input onKeyUp={(event) => this.handleKeyUp(event, 'firstname')}/>
+                    </label>
+                    <label> <span> Nom : </span>
+                        <input onKeyUp={(event) => this.handleKeyUp(event, 'lastname')}/>
+                    </label>
+                    <label> <span> Adresse E-Mail : </span>
+                        <input onKeyUp={(event) => this.handleKeyUp(event, 'email')} type="email"/>
+                    </label>
+                    <label> <span> Mot de passe : </span>
+                        <input onKeyUp={(event) => this.handleKeyUp(event, 'password')} type="password"/>
+                    </label>
+                    <button class="SubmitButton">Submit</button>
+                </form>
+            </div>
         )
     }
 
