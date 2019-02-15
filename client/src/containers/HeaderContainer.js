@@ -1,8 +1,6 @@
 import React from 'react';
-import logo from "../logo.svg";
 import ProfileBanner from "./ProfileBanner";
-import ToggleButtonContainer from "./ToggleButtonContainer";
-import {BrowserRouter, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export default class HeaderContainer extends React.Component {
 
