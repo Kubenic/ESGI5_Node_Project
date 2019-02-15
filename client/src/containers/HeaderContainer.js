@@ -17,7 +17,6 @@ export default class HeaderContainer extends React.Component {
                     <Link to="/product/create">Créer un produit</Link>
                     <Link to="/products">Voir les produits</Link>
                 </React.Fragment>
-
             </header>
         )
     }
