@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
-import ToggleButtonContainer from "./containers/ToggleButtonContainer";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SecurityContainer from "./containers/SecurityContainer";
 import ProductCreateContainer from "./containers/ProductCreateContainer";
 import ProductsContainer from "./containers/ProductsContainer";
-import ProfileBanner from "./containers/ProfileBanner";
 import HeaderContainer from "./containers/HeaderContainer";
 
 class App extends Component {
