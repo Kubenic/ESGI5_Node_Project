@@ -4,8 +4,17 @@ export default class LoginForm extends React.Component {
 
     state = {
         username: '',
-        password: ''
+        password: '',
+        signin: true,
+        signup: false
     };
+    updateTitle = (title) => {
+        document.title = title
+    }
+
+    /*componentDidUpdate(){
+        this.updateTitle("Connexion");
+    }*/
 
     handleKeyUp = (event, field) => {
         const input = event.currentTarget;

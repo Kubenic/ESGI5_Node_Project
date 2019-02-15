@@ -35,4 +35,5 @@ module.exports = router => {
     router.post('/user/login',auth.AuthLogin);
     router.post('/user/register',auth.AuthRegister);
     router.post('/user/example',auth.generateExampleToken);
+    router.get('/user',auth.AuthCheck);
 };

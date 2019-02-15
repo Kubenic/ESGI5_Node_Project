@@ -26,6 +26,7 @@ class App extends Component {
                     <BrowserRouter>
                         <React.Fragment>
                             <Link to="/security/login">Connexion</Link>
+                            <Link to="/security/register">Enregistrement</Link>
                             <Link to="/product/create">Créer un produit</Link>
                             <Link to="/products">Voir les produits</Link>
 

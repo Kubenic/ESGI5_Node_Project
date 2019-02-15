@@ -37,9 +37,15 @@ const AuthCheck = function(req, res){
     }else{
         const tokenString = auth.replace('Bearer ', '');
         verifyToken(tokenString).then(function(decoded){
-            let query = User.findOne({'login': decoded.login}).then(function(data){
+            User.findOne({'login': decoded.login}).then(function(data){
                 if(data){
-
+                    let infos = {
+                        firstname: data.firstname,
+                        lastname: data.lastname,
+                        username: data.username,
+                        login: data.login
+                    }
+                    res.send(JSON.stringify(infos));
                 }else{
                     res.sendStatus(401);
                 }
@@ -52,16 +58,17 @@ const AuthCheck = function(req, res){
 const AuthLogin = function(req, res) {
     try{
         let body = req.body;
+        console.log(body)
+        console.log(bcrypt.hashSync(body.password,10))
         if(body.login){
-            User.find(
+            User.findOne(
                 {
-                    $and: [
-                        {'password': bcrypt.hashSync(body.password,10)},
-                        {$or: [{"email":body.login},{"login": body.login}]}
-                    ]
+                    password: body.password,
+                    login: body.login
                 }
             )
             .then((data)=>{{
+                console.log(data);
                 let payload = {
                     firstname: data.firstname,
                     lastname: data.lastname,
@@ -69,7 +76,11 @@ const AuthLogin = function(req, res) {
                     login: data.login
                 };
                 res.setHeader('Content-Type','application/json');
-                res.send(generateToken(payload));
+                let responseData = {
+                    isLoggedIn : true,
+                    payload : generateToken(payload)
+                }
+                res.send(JSON.stringify(responseData));
             }})
             .catch((error)=> {
                 res.sendStatus(401);
@@ -82,16 +93,20 @@ const AuthLogin = function(req, res) {
 const AuthRegister = function(req, res){
    try{
        let body = req.body;
+       console.log(body);
        if(EmailValidator.test(body.email)){
            User.find().or([{"email":body.email},{"login": body.login}]).then((result) => {
+               console.log(result);
                if(result.length === 0){
+                   console.log("CA AMRCHE");
                    const newUser = new User({
                        login:body.login,
                        email:body.email,
                        username: body.username,
                        firstname: body.firstname,
                        lastname: body.lastname,
-                       password: bcrypt.hashSync(body.password,10)
+                       //password: bcrypt.hashSync(body.password,10)
+                       password: body.password
                    });
                    newUser.save().then((data) => {
                        let payload = {
@@ -101,13 +116,17 @@ const AuthRegister = function(req, res){
                            login: data.login
                        }
                        res.setHeader('Content-Type','application/json');
-                       res.send(generateToken(payload));
+                       let responseData = {
+                           isLoggedIn : true,
+                           payload : generateToken(payload)
+                       }
+                       res.send(JSON.stringify(responseData));
                    })
                }else{
                    res.sendStatus(401);
                }
            }).catch((error) => {
-               res.send(error);
+               res.send(401);
            })
        }
 

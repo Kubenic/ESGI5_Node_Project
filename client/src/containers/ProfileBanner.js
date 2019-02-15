@@ -5,8 +5,10 @@ import Banner from "../components/Banner";
 
 class ProfileBanner extends React.Component {
     render() {
+        console.log(this.props);
         const { user, isLogged } = this.props;
-        return <Banner content={isLogged ? user.token : "Vous n'êtes pas connecté(e)"}/>
+        console.log(user);
+        return <Banner content={isLogged ? user.username : "Vous n'êtes pas connecté(e)"}/>
     }
 }
 
