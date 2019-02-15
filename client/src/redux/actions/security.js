@@ -1,13 +1,11 @@
 const user = require('./user');
 
-
-
 export const login = (username, password, dispatch) => {
     const data = {
         login: username,
         password:password
     };
-    console.log(JSON.stringify(data));
+
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     fetch('http://localhost:8080/user/login',
