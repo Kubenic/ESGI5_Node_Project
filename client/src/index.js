@@ -6,9 +6,12 @@ import * as serviceWorker from './serviceWorker';
 import {Provider} from "react-redux";
 import {createStore} from "redux";
 import rootReducer from "./redux/reducers"
-
+import {logUser} from "./redux/actions/user";
 const store = createStore(rootReducer);
-
+const token = localStorage.getItem('token');
+if(token || token !== ''){
+    store.dispatch(logUser({token:token},store.dispatch));
+}
 ReactDOM.render(
     <Provider store={store}>
         <App />
