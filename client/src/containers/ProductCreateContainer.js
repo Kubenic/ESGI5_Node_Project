@@ -1,6 +1,8 @@
 import React from 'react';
+import connect from "react-redux/es/connect/connect";
+import { add } from '../redux/actions/product';
 
-export default class CreateProductFormContainer extends React.Component {
+class ProductCreateContainer extends React.Component {
 
     state = {
         title: '',
@@ -19,12 +21,13 @@ export default class CreateProductFormContainer extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.onSubmit(this.state);
+        this.props.add(this.state.title, this.state.description, this.state.price, this.state.vote);
+        this.props.history.push('/products');
     };
 
     render() {
         return (
-            <div class="formCss">
+            <div className="formCss">
                 <form onSubmit={this.handleSubmit}>
                     <label> <span> Titre : </span>
                         <input onKeyUp={(event) => this.handleKeyUp(event, 'title')}/>
@@ -38,10 +41,17 @@ export default class CreateProductFormContainer extends React.Component {
                     <label> <span> Vote : </span>
                         <input onKeyUp={(event) => this.handleKeyUp(event, 'vote')}/>
                     </label>
-                    <button class="SubmitButton">Submit</button>
+                    <button className="SubmitButton">Submit</button>
                 </form>
             </div>
         )
     }
+}
 
-} 
+const mapDispatchToProps = dispatch => {
+    return {
+        add: (title, description, price, vote) => dispatch(add(title, description, price, vote, dispatch)),
+    }
+};
+
+export default connect(undefined, mapDispatchToProps)(ProductCreateContainer);

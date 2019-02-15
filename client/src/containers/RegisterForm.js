@@ -33,7 +33,7 @@ export default class RegisterForm extends React.Component {
     }
     render() {
         return (
-            <div class="formCss">
+            <div className="formCss">
                 <form onSubmit={this.handleSubmit}>
                     <label> <span> Identifiant : </span>
                         <input onKeyUp={(event) => this.handleKeyUp(event, 'login')}/>
@@ -53,7 +53,7 @@ export default class RegisterForm extends React.Component {
                     <label> <span> Mot de passe : </span>
                         <input onKeyUp={(event) => this.handleKeyUp(event, 'password')} type="password"/>
                     </label>
-                    <button class="SubmitButton">Submit</button>
+                    <button className="SubmitButton">Submit</button>
                 </form>
             </div>
         )
